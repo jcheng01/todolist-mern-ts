@@ -21,3 +21,15 @@ app.listen(3000, () => {
 //create api route, req is wat is sent from font end, res is resp from backend
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+
+//middleware setup, checks for errors durring request response lifecycle
+app.use((err, req, res, next) => {
+  //tells express this is the middleware function
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  });
+});
