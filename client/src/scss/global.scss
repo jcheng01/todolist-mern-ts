@@ -1,0 +1,93 @@
+@forward "./base";
+
+body {
+  background-color: var(--neutral-5);
+  margin: 0;
+}
+
+h1 {
+  color: cadetblue;
+  span {
+    color: rgb(113, 149, 77);
+  }
+}
+
+.nav {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  background: lightblue;
+  justify-content: space-around;
+  > * {
+    display: flex;
+    align-items: center;
+  }
+  form {
+    background-color: antiquewhite;
+    padding: 20px;
+    > :first-child {
+      //input
+      border-radius: 0.5em;
+      background: transparent;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+    &:nth-child(2) {
+      //search icon
+      color: goldenrod;
+    }
+  }
+  ul {
+    display: flex;
+    background-color: bisque;
+    li {
+      text-decoration: none;
+      margin: 5px;
+    }
+  }
+}
+
+.signup {
+  h1 {
+    margin: 0;
+    padding-block: 5%;
+    text-align: center;
+    // border: solid blue;
+  }
+  form {
+    // border: solid blue;
+    margin-inline: 15%;
+    display: flex;
+    flex-direction: column;
+    > * {
+      margin-block: 5px;
+      border: solid 2px rgb(91, 96, 101, 0.2);
+      border-radius: 1rem;
+      background: transparent;
+      padding: 10px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  div {
+    display: flex;
+    span {
+      margin-inline: 5px;
+      color: blue;
+    }
+  }
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 13px 40px;
+  &:hover {
+    transition: 0.33s;
+    color: aqua;
+  }
+  // transition: background-color 200ms, color 200ms;
+}

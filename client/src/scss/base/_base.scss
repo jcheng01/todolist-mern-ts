@@ -1,0 +1,34 @@
+// @use '../abstracts/variables';
+
+html {
+  scroll-behavior: smooth;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #fff;
+  // color: variables.$lightGrey;
+}
+span {
+  // color: variables.$teal;
+}
