@@ -13,6 +13,8 @@ mongoose
   .catch((error) => console.log(error)); //chain promises to see if db is connected
 
 const app = express();
+
+app.use(express.json());
 //installed nodemon so server updates by itselft
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
