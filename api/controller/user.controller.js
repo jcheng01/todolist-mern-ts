@@ -3,3 +3,5 @@ export const test = (req, res) => {
     message: "hello world!",
   });
 };
+
+//contains the request/send logic and helps the modela and route communicate

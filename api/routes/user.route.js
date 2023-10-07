@@ -1,5 +1,6 @@
 import express from "express";
 import { test } from "../controller/user.controller.js";
+//router is definf the endpoints that maps them to the appropriate controller functions
 
 const router = express.Router();
 

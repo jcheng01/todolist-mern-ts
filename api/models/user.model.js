@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 //import mongoose so we can create object schema for how the data is structured
-
+//the model contains the data structure
 const userSchema = new mongoose.Schema(
   {
     username: {

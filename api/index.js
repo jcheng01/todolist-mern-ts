@@ -2,6 +2,7 @@ import express from "express"; //import express so we can start setting up web s
 import mongoose from "mongoose"; //import the database
 import dotenv from "dotenv"; // imported so we can use .env file to safley store mongo token
 import userRouter from "./routes/user.route.js";
+import authRouter from "./routes/auth.route.js";
 dotenv.config();
 
 mongoose
@@ -19,3 +20,4 @@ app.listen(3000, () => {
 
 //create api route, req is wat is sent from font end, res is resp from backend
 app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
