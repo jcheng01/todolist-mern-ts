@@ -2,9 +2,15 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useState, ChangeEvent, FormEvent } from "react";
 
+type FormData = {
+  username?: string;
+  email?: string;
+  password?: string;
+};
+
 const Signin = () => {
-  const [data, setData] = useState({});
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<FormData>({});
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +43,7 @@ const Signin = () => {
       navigate("/");
     } catch (error) {
       setLoading(false);
-      setError(error.message);
+      setError((error as Error).message);
     }
   };
   console.log(data);
