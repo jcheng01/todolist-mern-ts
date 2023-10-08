@@ -1,28 +1,35 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useState, ChangeEvent, FormEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice";
 
-type FormData = {
-  username?: string;
-  email?: string;
-  password?: string;
-};
+// type FormData = {
+//   username?: string,
+//   email?: string,
+//   password?: string,
+//   message?: string,
+// };
 
 const Signin = () => {
-  const [data, setData] = useState<FormData>({});
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({});
+  const { loading, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     setData({
       ...data,
       [e.target.id]: e.target.value,
     });
   };
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the page from refreshing, browser issue
     try {
-      setLoading(true);
+      dispatch(signInStart());
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
@@ -34,16 +41,13 @@ const Signin = () => {
       console.log(datajson);
 
       if (datajson.success === false) {
-        setError(datajson.message);
-        setLoading(false);
+        dispatch(signInFailure(data.message));
         return;
       }
-      setLoading(false);
-      setError(null);
+      dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
-      setLoading(false);
-      setError((error as Error).message);
+      dispatch(signInFailure(error.message));
     }
   };
   console.log(data);
