@@ -1,10 +1,7 @@
 import React from "react";
 
-type Props = {
-  todos?: string[];
-};
 //all the different naviagted pages linkes
-const Home = (props: Props) => {
+const Home = () => {
   //
   return <div>list</div>;
 };

@@ -1,0 +1,57 @@
+// @use '../../scss/abstracts/variables';
+
+// @mixin btn($ypadding, $xpadding) {
+//   color: variables.$teal;
+//   border-style: solid;
+//   border-width: 0.08rem;
+//   border-color: variables.$teal;
+//   border-radius: 0.3em;
+//   padding: $ypadding $xpadding;
+//   transition-duration: 0.5s;
+//   text-decoration: none;
+//   font-size: 0.8rem;
+//   font-family: variables.$roboMono;
+//   &:hover {
+//     background-color: #00d1b221;
+//   }
+// }
+
+// @mixin breakpoint($value) {
+//   // need to validate $value
+
+//   // if a string use standard breakpoints
+//   @if type-of($value) == 'string' {
+//     @if ($value == 'xs' or $value == 'phone') {
+//       @media (max-width: 844px) {
+//         @content;
+//       }
+//     } @else if ($value == 'sm' or $value == 'tablet') {
+//       @media (max-width: 700px) {
+//         @content;
+//       }
+//     } @else if ($value == 'md' or $value == 'laptop') {
+//       @media (max-width: 1150px) {
+//         @content;
+//       }
+//     } @else if($value == 'lg' or $value == 'desktop') {
+//       @media (max-width: 1140px) {
+//         @content;
+//       }
+//     } @else {
+//       @warn "Breakpoint mixin supports: xs or phone, sm or tablet, md or laptop, lg or desktop, xl or tvscreen as string variables";
+//     }
+//   }
+
+//   // if value then use value as minimum width.
+//   @else if is-length($value) {
+//     @media (min-width: #{$value}) {
+//       @content;
+//     }
+//   } @else {
+//     @warn "Breakpoint mixin supports: string variables or relative units";
+//   }
+
+//   // if a length value than use that
+
+//   // error warn if string does not match or it is not a length
+// }

@@ -1,12 +1,6 @@
 import clsx from "clsx";
 
-type Props = {
-  className?: string;
-  children: string;
-  disabled?: boolean;
-};
-
-const Button = (props: Props) => {
+const Button = (props) => {
   const { className, children, ...rest } = props;
   const classNames = clsx({ btn: true }, className);
 

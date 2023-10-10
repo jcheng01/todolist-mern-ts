@@ -1,24 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useState, ChangeEvent, FormEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  signInStart,
-  signInSuccess,
-  signInFailure,
-} from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
-// type FormData = {
-//   username?: string,
-//   email?: string,
-//   password?: string,
-//   message?: string,
-// };
-
-const Signin = () => {
+const Signup = () => {
   const [data, setData] = useState({});
-  const { loading, error } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleChange = (e) => {
     setData({
@@ -29,8 +17,8 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the page from refreshing, browser issue
     try {
-      dispatch(signInStart());
-      const res = await fetch("/api/auth/signin", {
+      setLoading(true);
+      const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,20 +29,29 @@ const Signin = () => {
       console.log(datajson);
 
       if (datajson.success === false) {
-        dispatch(signInFailure(data.message));
+        setError(datajson.message);
+        setLoading(false);
         return;
       }
-      dispatch(signInSuccess(data));
-      navigate("/");
+      setLoading(false);
+      setError(null);
+      navigate("/signin");
     } catch (error) {
-      dispatch(signInFailure(error.message));
+      setLoading(false);
+      setError(error.message);
     }
   };
   console.log(data);
   return (
     <div className="signup">
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="username"
+          id="username"
+          onChange={handleChange}
+        />
         <input
           type="email"
           placeholder="email"
@@ -68,13 +65,14 @@ const Signin = () => {
           onChange={handleChange}
         />
         <Button className="btn" disabled={loading}>
-          {loading ? "Loading ..." : "Sign In"}
+          {loading ? "Loading ..." : "Sign Up"}
         </Button>
+        <OAuth />
       </form>
       <div>
-        <p>Don't have an account?</p>
-        <Link to={"/signup"}>
-          <span>Sign Up</span>
+        <p>Have an account?</p>
+        <Link to={"/signin"}>
+          <span>Sign in</span>
         </Link>
       </div>
       {error && <p>{error}</p>}
@@ -82,4 +80,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;
