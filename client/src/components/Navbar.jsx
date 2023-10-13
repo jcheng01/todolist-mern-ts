@@ -1,8 +1,11 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <>
       <header className="nav">
@@ -19,8 +22,13 @@ const Navbar = () => {
           <Link to="/">
             <li>Home</li>
           </Link>
-          <Link to="/signup">
-            <li>Sign in</li>
+
+          <Link to="/profile">
+            {currentUser ? (
+              <img src={currentUser.avatar} alt="profile" />
+            ) : (
+              <li>Sign in</li>
+            )}
           </Link>
         </ul>
       </header>

@@ -48,6 +48,11 @@ h1 {
       margin: 10px;
     }
   }
+  img {
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 }
 
 .signup {
