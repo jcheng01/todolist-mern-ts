@@ -111,3 +111,24 @@ h1 {
     opacity: 0.5;
   }
 }
+
+.form {
+  // border: solid blue;
+  img {
+    width: 50%;
+    margin: 0 auto;
+  }
+  margin-inline: 15%;
+  display: flex;
+  flex-direction: column;
+  > * {
+    margin-block: 5px;
+    border: solid 2px rgb(91, 96, 101, 0.2);
+    border-radius: 0.1rem;
+    background: transparent;
+    padding: 10px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
